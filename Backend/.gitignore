@@ -1,0 +1,45 @@
+# Node modules directory
+node_modules/
+
+# Build output directories
+build/
+dist/
+
+# Logs and debug files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and configuration files
+# Contains sensitive information like API keys, secrets, and database credentials.
+.env
+.env.local
+.env.production
+
+# IDE/editor files
+# Configuration and project-specific settings for IDEs/editors.
+.idea/
+.vscode/
+
+# Operating system files
+# Common OS-specific files that shouldn't be tracked.
+.DS_Store   # macOS
+Thumbs.db   # Windows
+
+# Frontend-specific files
+# Cached and compiled files from React development and build processes.
+.cache/
+public/
+
+# Testing and coverage
+coverage/
+
+# Compiled and temporary files
+# Any compiled or cached files that are created during development or build.
+*.js.map
+*.css.map
+
+# Backup or temporary files
+*.bak
+~*
