@@ -9,7 +9,6 @@ const ShowEmployee = () => {
 
   const { employeeList, employeeCount } = useSelector((state) => state.employee);
   const [search, setSearch] = useState("")
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -28,11 +27,10 @@ const ShowEmployee = () => {
         emp.f_Designation.toLowerCase().includes(search) ||
         emp.f_gender.toLowerCase().includes(search) ||
         emp.f_Course.toLowerCase().includes(search))
-  })
+  }) 
 
   const totalPages = Math.ceil(searchFilter.length / empPerPage);
-
-  const indexOfLastEmp = currentPage * empPerPage;
+  const indexOfLastEmp = currentPage * empPerPage ;
   const indexOfFirstEmp = indexOfLastEmp - empPerPage;
   const currentEmpPage = employeeList.slice(indexOfFirstEmp, indexOfLastEmp);
 

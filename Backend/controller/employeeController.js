@@ -17,7 +17,6 @@ exports.get = async function (req, res) {
 exports.remove = async function (req, res) {
     try {
         const f_Id = req.params.f_Id;
-        console.log(f_Id)
         // check f_Id exists
         let user = await Employee.findOne({ f_Id })
         if (!user) {
@@ -45,6 +44,14 @@ exports.add = async function (req, res) {
     try {
         const { name, email, mobile, designation, gender, course } = req.body
         const img = req.file.path;
+
+        // check email, mobile no exists or not
+        let checkUniqueEmail = await Employee.findOne({ f_Email: email })
+        let checkUniqueMobile = await Employee.findOne({ f_Mobile: mobile })
+        if (checkUniqueEmail || checkUniqueMobile) {
+            return res.status(400).json({ success: false, message: "Invalid request, here" })
+        }
+
         const newEmployee = await Employee.create({
             f_Id: uuidv4(),
             f_Image: img,

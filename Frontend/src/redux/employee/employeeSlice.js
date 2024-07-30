@@ -125,20 +125,25 @@ export const employeeSlice = createSlice({
                 state.addEmployeeDataLoading = false;
                 const { success, newEmployee, message } = action.payload
                 if (success) {
-                    state.employeeList = state.employeeList.push({
-                        "_id": newEmployee._id,
-                        "f_Id": newEmployee.f_Id,
-                        "f_Image": newEmployee.f_Image,
-                        "f_Name": newEmployee.f_Name,
-                        "f_Email": newEmployee.f_Email,
-                        "f_Mobile": newEmployee.f_Mobile,
-                        "f_Designation": newEmployee.f_Designation,
-                        "f_gender": newEmployee.f_gender,
-                        "f_Course": newEmployee.f_Course,
-                        "f_Createdate": newEmployee.f_Createdate
-                    })
+                    console.log(typeof(state.employeeList), "Checking emp list at redux before adding at frontend?")
+                    state.employeeList = [
+                        ...state.employeeList,
+                        {
+                            "_id": newEmployee._id,
+                            "f_Id": newEmployee.f_Id,
+                            "f_Image": newEmployee.f_Image,
+                            "f_Name": newEmployee.f_Name,
+                            "f_Email": newEmployee.f_Email,
+                            "f_Mobile": newEmployee.f_Mobile,
+                            "f_Designation": newEmployee.f_Designation,
+                            "f_gender": newEmployee.f_gender,
+                            "f_Course": newEmployee.f_Course,
+                            "f_Createdate": newEmployee.f_Createdate
+                        }
+                    ];
                     state.employeeCount += 1
                     toast.success(message)
+                    console.log(typeof(state.employeeList), "Checking emp list at redux?")
                 }
             })
             .addCase(addEmployeeData.rejected, (state, action) => {
